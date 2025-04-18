@@ -1,0 +1,15 @@
+# Node.js
+/frontend/node_modules
+
+# Python
+/backend/__pycache__/
+/backend/*.pyc
+
+# Docker
+/backend/tmp/
+
+# backup
+/backup_storage/
+/node_modules/
+/package-lock.json
+/package.json
