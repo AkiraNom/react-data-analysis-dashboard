@@ -1,5 +1,7 @@
 import sqlite3
+
 import pandas as pd
+
 
 def fetch_sales_data(db_path)-> pd.DataFrame:
 

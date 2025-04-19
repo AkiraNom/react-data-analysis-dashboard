@@ -1,5 +1,6 @@
-import pandas as pd
 import sqlite3
+
+import pandas as pd
 import pycountry
 from geopy.geocoders import Nominatim
 
@@ -60,7 +61,7 @@ invoice_records = [
 ]
 
 # Connect to SQLite and create tables
-conn = sqlite3.connect("sales_data.db")
+conn = sqlite3.connect("../db/sales_data.db")
 cursor = conn.cursor()
 
 # Enable foreign keys

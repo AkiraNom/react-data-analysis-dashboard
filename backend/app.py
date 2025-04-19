@@ -1,14 +1,13 @@
 import sqlite3
-from datetime import datetime
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from utils import (fetch_sales_data)
+from utils import fetch_sales_data
 
 app = Flask(__name__)
 CORS(app, origins='*')
 
-db_path = 'sales_data.db'
+db_path = './db/sales_data.db'
 data = fetch_sales_data(db_path)
 
 @app.route('/api/countries', methods=['GET'])
