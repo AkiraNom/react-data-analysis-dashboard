@@ -2,7 +2,7 @@
 
 A comprehensive sales dashboard application built with React and Flask to analyze e-commerce data from the UCI Machine Learning Repository's Online Retail dataset.
 
-![Architecture](./application-architecture.svg)
+![Architecture](./src/application-architecture.svg)
 
 ## Project Overview
 
