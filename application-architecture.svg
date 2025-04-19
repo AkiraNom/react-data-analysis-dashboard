@@ -1,0 +1,73 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="600" fill="#f8f9fa" />
+  
+  <!-- Title -->
+  <text x="400" y="50" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#212529">E-Commerce Sales Dashboard Architecture</text>
+  
+  <!-- Main Sections -->
+  <rect x="50" y="100" width="300" height="400" rx="10" ry="10" fill="#e9ecef" stroke="#343a40" stroke-width="2" />
+  <text x="200" y="130" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#0d6efd">Frontend</text>
+  
+  <rect x="450" y="100" width="300" height="400" rx="10" ry="10" fill="#e9ecef" stroke="#343a40" stroke-width="2" />
+  <text x="600" y="130" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold" fill="#198754">Backend</text>
+  
+  <!-- Frontend Components -->
+  <rect x="80" y="160" width="240" height="80" rx="8" ry="8" fill="#cfe2ff" stroke="#0d6efd" stroke-width="2" />
+  <text x="200" y="190" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#0d6efd">React Components</text>
+  <text x="200" y="215" text-anchor="middle" font-family="Arial" font-size="12" fill="#495057">Dashboard, Panels, Tables, Charts</text>
+  
+  <rect x="80" y="260" width="240" height="80" rx="8" ry="8" fill="#cfe2ff" stroke="#0d6efd" stroke-width="2" />
+  <text x="200" y="290" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#0d6efd">Visualization Libraries</text>
+  <text x="200" y="315" text-anchor="middle" font-family="Arial" font-size="12" fill="#495057">Recharts, Leaflet, D3.js</text>
+  
+  <rect x="80" y="360" width="240" height="80" rx="8" ry="8" fill="#cfe2ff" stroke="#0d6efd" stroke-width="2" />
+  <text x="200" y="390" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#0d6efd">State Management</text>
+  <text x="200" y="415" text-anchor="middle" font-family="Arial" font-size="12" fill="#495057">React Hooks, Axios API Calls</text>
+  
+  <!-- Backend Components -->
+  <rect x="480" y="160" width="240" height="80" rx="8" ry="8" fill="#d1e7dd" stroke="#198754" stroke-width="2" />
+  <text x="600" y="190" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#198754">Flask API</text>
+  <text x="600" y="215" text-anchor="middle" font-family="Arial" font-size="12" fill="#495057">RESTful Endpoints, CORS</text>
+  
+  <rect x="480" y="260" width="240" height="80" rx="8" ry="8" fill="#d1e7dd" stroke="#198754" stroke-width="2" />
+  <text x="600" y="290" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#198754">Data Processing</text>
+  <text x="600" y="315" text-anchor="middle" font-family="Arial" font-size="12" fill="#495057">Pandas, NumPy, Geopy</text>
+  
+  <rect x="480" y="360" width="240" height="80" rx="8" ry="8" fill="#d1e7dd" stroke="#198754" stroke-width="2" />
+  <text x="600" y="390" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#198754">SQLite Database</text>
+  <text x="600" y="415" text-anchor="middle" font-family="Arial" font-size="12" fill="#495057">Tables: Region, Customer, Product, Invoice</text>
+  
+  <!-- Data Source -->
+  <rect x="300" y="520" width="200" height="50" rx="8" ry="8" fill="#fdf1db" stroke="#fd7e14" stroke-width="2" />
+  <text x="400" y="550" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#fd7e14">UCI Online Retail Dataset</text>
+  
+  <!-- Connections -->
+  <!-- API Connection -->
+  <path d="M320,200 L480,200" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)" />
+  <text x="400" y="190" text-anchor="middle" font-family="Arial" font-size="12" fill="#6c757d">API Requests</text>
+  
+  <!-- Data Flow -->
+  <path d="M600,240 L600,260" stroke="#6c757d" stroke-width="2" marker-end="url(#arrowhead)" />
+  <path d="M600,340 L600,360" stroke="#6c757d" stroke-width="2" marker-end="url(#arrowhead)" />
+  
+  <!-- Data Source Connection -->
+  <path d="M600,440 L400,520" stroke="#6c757d" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)" />
+  <text x="500" y="490" text-anchor="middle" font-family="Arial" font-size="12" fill="#6c757d">Data Import</text>
+  
+  <!-- User Interaction -->
+  <circle cx="40" cy="200" r="15" fill="#adb5bd" />
+  <circle cx="40" cy="185" r="8" fill="#f8f9fa" />
+  <path d="M25,205 Q40,225 55,205" fill="#f8f9fa" />
+  <text x="40" y="240" text-anchor="middle" font-family="Arial" font-size="12" fill="#495057">User</text>
+  
+  <path d="M55,200 L80,200" stroke="#6c757d" stroke-width="2" marker-end="url(#arrowhead)" />
+  <text x="70" y="190" text-anchor="middle" font-family="Arial" font-size="12" fill="#6c757d">View</text>
+  
+  <!-- Marker definitions -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6c757d" />
+    </marker>
+  </defs>
+</svg>
