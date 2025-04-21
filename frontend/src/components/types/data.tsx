@@ -26,11 +26,33 @@ export interface ProductData {
   profits: number;
 }
 
+export interface GeoJsonProperties {
+  name: string;
+  sales?: number;
+  'ISO3166-1-Alpha-3'?: string;
+  'ISO3166-1-Alpha-2'?: string;
+  [key: string]: any;
+}
+
+export interface GeoJsonFeature {
+  type: "Feature";
+  geometry: {
+    type: "Polygon" | "MultiPolygon";
+    coordinates: number[][][] | number[][][][];
+  };
+  properties: GeoJsonProperties;
+}
+
+export interface GeoJsonData {
+  type: "FeatureCollection";
+  features: GeoJsonFeature[];
+}
 export interface Data {
   monthlyData: MonthlyData[];
   countriesData: CountryData[];
   productsData: ProductData[];
   metricsData: MetricsData;
+  mapData: GeoJsonData;
 }
 
 export type Query = string;

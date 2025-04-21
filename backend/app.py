@@ -1,23 +1,29 @@
+import json
 import sqlite3
+from datetime import datetime
 
+import pandas as pd
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from utils import fetch_sales_data
+from utils import fetch_sales_data, filter_geojson_by_sales, get_country_data
 
 app = Flask(__name__)
 CORS(app, origins='*')
 
-db_path = './db/sales_data.db'
-data = fetch_sales_data(db_path)
-
-@app.route('/api/countries', methods=['GET'])
-def get_countries():
-
-    country_list = sorted(data['country'].unique().tolist()) # unique countries alphabetical order
-
-    return jsonify({'countries':country_list})
+DB_PATH = './db/sales_data.db'
+data = fetch_sales_data(DB_PATH)
+data['invoice_date'] = pd.to_datetime(data['invoice_date'])
 
 # API Routes
+@app.route('/api/monthly-data', methods=['GET'])
+def get_monthly_data():
+
+    data['name'] = pd.to_datetime(data['invoice_date']).dt.strftime('%m-%Y')
+    monthly_data = data.loc[:, ['name','sales','profits']].groupby(['name']).sum().reset_index()
+    result = monthly_data.to_dict(orient='records')
+
+    return jsonify(result)
+
 @app.route('/api/metrics', methods=['GET'])
 def get_metrics():
 
@@ -31,12 +37,9 @@ def get_metrics():
     return jsonify(metrics)
 
 @app.route('/api/countries-data', methods=['GET'])
-def get_country_data():
-    filtered_data = data[data['country_iso_alpha3'] != 'UNK'].copy()
-    data_by_country = filtered_data.loc[:, ['country','latitude', 'longitude', 'sales', 'profits']]\
-        .groupby(['country', 'latitude', 'longitude']).sum().reset_index()\
-        .rename({'country': 'name'}, axis=1).sort_values(by='sales', ascending=False)
+def get_sales_profit_by_country():
 
+    data_by_country = get_country_data(data)
     sales_profits_by_country = data_by_country.to_dict(orient='records')
 
     return jsonify(sales_profits_by_country)
@@ -51,15 +54,20 @@ def get_product_data():
 
     return jsonify(sales_profits_by_product)
 
-@app.route('/api/monthly-data', methods=['GET'])
-def get_monthly_data():
 
-    data['name'] = data['invoice_date'].dt.strftime('%m-%Y')
-    monthly_data = data.loc[:, ['name','sales','profits']].groupby(['name']).sum().reset_index()
+@app.route('/api/map-data', methods=['GET'])
+def map_geojson_with_values():
 
-    result = monthly_data.to_dict(orient='records')
+    with open('./geojson/countries.geojson') as f:
+        geojson = json.load(f)
 
-    return jsonify(result)
+    print("GeoJSON loaded. Getting country data...")
+    data_by_country = get_country_data(data).loc[:,['name','sales']]
+    sales_map = data_by_country.set_index('name')['sales'].to_dict()
+
+    filtered_geojson = filter_geojson_by_sales(geojson, sales_map)
+
+    return jsonify(filtered_geojson)
 
 @app.route('/api/query-data', methods=['POST'])
 def run_sql_query():
@@ -70,8 +78,7 @@ def run_sql_query():
         if not query:
             return jsonify({"message": "Missing query parameter"}), 400
 
-        db_path = 'sales_data.db'
-        conn = sqlite3.connect(db_path)
+        conn = sqlite3.connect(DB_PATH)
         conn.row_factory = sqlite3.Row
         cursor = conn.cursor()
 

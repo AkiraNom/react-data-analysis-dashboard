@@ -19,23 +19,24 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchData();
-    console.log('inside effect')
   }, []);
 
   const fetchData = useCallback(async () => {
     setLoading(true);
     try {
-      const [monthlyResponse, countriesResponse, productsResponse, metricsResponse] = await Promise.all([
+      const [monthlyResponse, countriesResponse, productsResponse, metricsResponse, mapResponse] = await Promise.all([
         axios.get('/api/monthly-data'),
         axios.get('/api/countries-data'),
         axios.get('/api/products-data'),
-        axios.get('/api/metrics')
+        axios.get('/api/metrics'),
+        axios.get('/api/map-data')
       ]);
       setData({
         monthlyData: monthlyResponse.data,
         countriesData: countriesResponse.data,
         productsData: productsResponse.data,
-        metricsData: metricsResponse.data
+        metricsData: metricsResponse.data,
+        mapData: mapResponse.data
       });
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
@@ -53,11 +54,7 @@ const Dashboard = () => {
     };
   }, [data?.metricsData]);
 
-  const memoizedMonthlyData = useMemo(() => data?.monthlyData || [], [data?.monthlyData]);
-  const memoizedCountriesData = useMemo(() => data?.countriesData || [], [data?.countriesData]);
-  const memoizedProductsData = useMemo(() => data?.productsData || [], [data?.productsData]);
-
-  if (loading) {
+  if (loading || !data) {
     return <LoadingSpinner message="Loading dashboard data..." />;
   }
 
@@ -79,9 +76,10 @@ const Dashboard = () => {
 
             {activeTab === 'overview' ? (
               <OverviewPanel
-                monthlyData={memoizedMonthlyData}
-                countriesData={memoizedCountriesData}
-                productsData={memoizedProductsData}
+                monthlyData={data.monthlyData}
+                countriesData={data.countriesData}
+                productsData={data.productsData}
+                mapData={data.mapData}
               />
             ) : (
               <SQLQueryPanel />

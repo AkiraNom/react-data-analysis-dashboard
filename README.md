@@ -2,7 +2,9 @@
 
 A comprehensive sales dashboard application built with React and Flask to analyze e-commerce data from the UCI Machine Learning Repository's Online Retail dataset.
 
-![Architecture](./src/application-architecture.svg)
+<img src="src/Overview.gif" width="400" height="300">
+<img src="src/SQLPanel.gif" width="400" height="300">
+
 
 ## Project Overview
 
@@ -16,9 +18,11 @@ This project provides a full-stack dashboard solution for analyzing e-commerce s
 - **Top Performers**: Tables showing top countries and products by sales and profits
 - **SQL Query Tool**: Custom SQL query interface with results visualization
 
+
 ## Architecture
 The applicaiton follows a containerized microservies architecture:
 
+![Architecture](./src/application-architecture.svg)
 - **Fronted Container**: React application serving the UI
     - Cunsumes data from the backend API
     - Visualizes data using Recharts and Leaflet
