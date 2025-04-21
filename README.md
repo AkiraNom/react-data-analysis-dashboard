@@ -44,10 +44,10 @@ This project uses the Online Retail dataset from the UCI Machine Learning Reposi
 |Endpoint|Method|Description|
 |--------|------|-----------|
 | `/api/metrics` | GET | Returns overall metrics like total sales and profits|
-| `/api/countries` | GET | Returns list of countries in the dataset|
+| `/api/monthly-data` | GET | Returns monthly sales and profit trends|
 | `/api/countries-data` | GET | Returns sales and profit data by country|
 | `/api/products-data` | GET | Returns sales and profit data by product|
-| `/api/monthly-data` | GET | Returns monthly sales and profit trends|
+| `/api/map-data` | GET | Returns geojson data with sales data|
 | `/api/query-data` | POST | Executes custom SQL queries|
 
 ## Database Schema
