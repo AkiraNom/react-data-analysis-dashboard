@@ -20,15 +20,15 @@ This project provides a full-stack dashboard solution for analyzing e-commerce s
 
 
 ## Architecture
-The applicaiton follows a containerized microservies architecture:
+The application follows a containerized microservices architecture:
 
 ![Architecture](./src/application-architecture.svg)
-- **Fronted Container**: React application serving the UI
-    - Cunsumes data from the backend API
+- **Frontend Container**: React application serving the UI
+    - Consumes data from the backend API
     - Visualizes data using Recharts and Leaflet
 
 - **Backend Container**: Flask application with SqLite database
-    - Provides RESTfull API endpoints
+    - Provides RESTful API endpoints
     - Processes data and handles SQL queries
     - Manages the database layer
 
