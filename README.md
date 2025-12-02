@@ -23,11 +23,11 @@ This project provides a full-stack dashboard solution for analyzing e-commerce s
 The application follows a containerized microservices architecture:
 
 ![Architecture](./src/application-architecture.svg)
-- **Frontend Container**: React application serving the UI
+- **Frontend Container**: React for the UI
     - Consumes data from the backend API
     - Visualizes data using Recharts and Leaflet
 
-- **Backend Container**: Flask application with SqLite database
+- **Backend Container**: Flask with SqLite database
     - Provides RESTful API endpoints
     - Processes data and handles SQL queries
     - Manages the database layer
@@ -54,10 +54,10 @@ This project uses the Online Retail dataset from the UCI Machine Learning Reposi
 
 The application uses a relational database with the following tables:
 
-- **Region**: Geographic information about countries
-- **Customer**: Customer information linked to regions
+- **Region**: Geographic data
+- **Customer**: Customer data
 - **Product**: Product details including description and pricing
-- **Invoice**: Sales transactions linking products and customers
+- **Invoice**: Transactions data
 
 ### ER Diagram
 ![ER Diagram](/frontend/public/databaseERDiagram.png)
