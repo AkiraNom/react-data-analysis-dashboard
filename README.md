@@ -2,8 +2,8 @@
 
 A comprehensive sales dashboard application built with React and Flask to analyze e-commerce data from the UCI Machine Learning Repository's Online Retail dataset.
 
-<img src="src/Overview.gif" width="400" height="300">
-<img src="src/SQLPanel.gif" width="400" height="300">
+<img src="src/Overview.gif" width="600" height="500">
+<img src="src/SQLPanel.gif" width="600" height="500">
 
 
 ## Project Overview
@@ -58,3 +58,6 @@ The application uses a relational database with the following tables:
 - **Customer**: Customer information linked to regions
 - **Product**: Product details including description and pricing
 - **Invoice**: Sales transactions linking products and customers
+
+### ER Diagram
+![ER Diagram](/frontend/public/databaseERDiagram.png)
